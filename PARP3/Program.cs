@@ -7,27 +7,22 @@ namespace PARP4
     {
         private static void Main(string[] args)
         {
-            //Console.WriteLine("Прогревыч");
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    TryOnBytes();
-            //    TryOnShorts();
-            //    TryOnInts();
-            //    TryOnLongs();
-            //    TryOnFloats();
-            //    TryOnDoubles();
-            //}
+            #region GetData
+            Console.WriteLine($"Width of the SIMD register file:{Vector<int>.Count * 32}");
+            Console.WriteLine($"Is hardware accelerated:{Vector.IsHardwareAccelerated}");
+            Console.WriteLine();
+            #endregion
 
-            Console.WriteLine(Vector<int>.Count);
-            Console.WriteLine(Vector.IsHardwareAccelerated);
-
+            #region Initialization
             var bytes = Initializer.GetBytes();
             var shorts = Initializer.GetShorts();
             var ints = Initializer.GetInts();
             var longs = Initializer.GetLongs();
             var floats = Initializer.GetFloats();
             var doubles = Initializer.GetDoubles();
+            #endregion
 
+            #region Task2
             Console.WriteLine("Sum w/o SIMD");
             Console.WriteLine($"On bytes:{Standart.Try(Standart.SumBytes, bytes.Item1, bytes.Item2)}");
             Console.WriteLine($"On shorts:{Standart.Try(Standart.SumShorts, shorts.Item1, shorts.Item2)}");
@@ -44,6 +39,11 @@ namespace PARP4
             Console.WriteLine($"On floats:{SIMD.Add(floats.Item1, floats.Item2)}");
             Console.WriteLine($"On doubles:{SIMD.Add(doubles.Item1, doubles.Item2)}");
             Console.WriteLine();
+            #endregion
+
+            GC.Collect();
+
+            #region Task6
             Console.WriteLine("Sqrt w/o SIMD");
             Console.WriteLine($"On floats:{Standart.TrySqrt(Standart.SqrtFloats, floats.Item1)}");
             Console.WriteLine($"On doubles:{Standart.TrySqrt(Standart.SqrtDoubles, doubles.Item1)}");
@@ -51,10 +51,15 @@ namespace PARP4
             Console.WriteLine($"On floats:{SIMD.Sqrt(floats.Item1)}");
             Console.WriteLine($"On doubles:{SIMD.Sqrt(doubles.Item1)}");
             Console.WriteLine();
+            #endregion
+
+            #region Task8
             var complexs = Initializer.GetComplex();
             Console.WriteLine(
                 $"Complex w/o SIMD:{Standart.Try(Standart.MultComplex, complexs.Item1, complexs.Item2)}");
             Console.WriteLine($"Complex with SIMD:{SIMD.MultComplex(complexs.Item1, complexs.Item2)}");
+            #endregion
+
         }
     }
 }

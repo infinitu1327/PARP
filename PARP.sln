@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PARP4", "PARP4\PARP4.csproj", "{0C243F55-026F-42E9-82E3-452830183050}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PARP3", "PARP3\PARP3.csproj", "{0C243F55-026F-42E9-82E3-452830183050}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PARP4Task1", "PARP4Task1\PARP4Task1.vcxproj", "{A0122BF7-F99A-41D3-ADA1-3DA063DF3B1C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PARP3Task1", "PARP3Task1\PARP3Task1.vcxproj", "{A0122BF7-F99A-41D3-ADA1-3DA063DF3B1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
