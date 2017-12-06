@@ -1,19 +1,18 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 
-namespace PARP4
+namespace PARP3
 {
-    internal class Initializer
+    internal static class Initializer
     {
-        public const long Length = 4096 * 4096;
-        private static Random _random = new Random();
+        private const long Length = 4096 * 4096;
+        private static readonly Random Random = new Random();
 
         public static (byte[], byte[]) GetBytes()
         {
             var first = new byte[Length];
             var second = new byte[Length];
-            _random.NextBytes(first);
-            _random.NextBytes(second);
+            Random.NextBytes(first);
+            Random.NextBytes(second);
 
             return (first, second);
         }
@@ -25,8 +24,8 @@ namespace PARP4
 
             for (var i = 0; i < Length; i++)
             {
-                first[i] = (short)_random.Next(short.MinValue, short.MaxValue);
-                second[i] = (short)_random.Next(short.MinValue, short.MaxValue);
+                first[i] = (short) Random.Next(short.MinValue, short.MaxValue);
+                second[i] = (short) Random.Next(short.MinValue, short.MaxValue);
             }
 
             return (first, second);
@@ -39,8 +38,8 @@ namespace PARP4
 
             for (var i = 0; i < Length; i++)
             {
-                first[i] = _random.Next();
-                second[i] = _random.Next();
+                first[i] = Random.Next();
+                second[i] = Random.Next();
             }
 
             return (first, second);
@@ -53,10 +52,10 @@ namespace PARP4
             for (var i = 0; i < Length; i++)
             {
                 var num = new byte[8];
-                _random.NextBytes(num);
+                Random.NextBytes(num);
                 first[i] = BitConverter.ToInt64(num, 0);
 
-                _random.NextBytes(num);
+                Random.NextBytes(num);
                 second[i] = BitConverter.ToInt64(num, 0);
             }
 
@@ -70,10 +69,10 @@ namespace PARP4
             for (var i = 0; i < Length; i++)
             {
                 var num = new byte[4];
-                _random.NextBytes(num);
+                Random.NextBytes(num);
                 first[i] = BitConverter.ToSingle(num, 0);
 
-                _random.NextBytes(num);
+                Random.NextBytes(num);
                 second[i] = BitConverter.ToSingle(num, 0);
             }
 
@@ -87,8 +86,8 @@ namespace PARP4
 
             for (var i = 0; i < Length; i++)
             {
-                first[i] = _random.NextDouble();
-                second[i] = _random.NextDouble();
+                first[i] = Random.NextDouble();
+                second[i] = Random.NextDouble();
             }
 
             return (first, second);

@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
-using System.Runtime.InteropServices.ComTypes;
 
-namespace PARP4
+namespace PARP3
 {
-    internal class SIMD
+    internal static class Simd
     {
         public static long Add<T>(T[] first, T[] second) where T : struct
         {
@@ -19,7 +17,7 @@ namespace PARP4
             for (var i = 0; i < first.Length - simdLength; i += simdLength)
             {
                 var firstVector = new Vector<T>(first, i);
-                var secondVector = new Vector<T>(first, i);
+                var secondVector = new Vector<T>(second, i);
 
                 (firstVector + secondVector).CopyTo(result, i);
             }
@@ -48,11 +46,11 @@ namespace PARP4
         public static long MultComplex(FloatComplex[] first, FloatComplex[] second)
         {
             var simdLength = Vector<float>.Count;
-            var firstTuple = 
-                (Real: first.Select(el => el.Real).ToArray(), 
+            var firstTuple =
+                (Real: first.Select(el => el.Real).ToArray(),
                 Imaginary: first.Select(el => el.Imaginary).ToArray());
             var secondTuple =
-                (Real: second.Select(el => el.Real).ToArray(), 
+                (Real: second.Select(el => el.Real).ToArray(),
                 Imaginary: second.Select(el => el.Imaginary).ToArray());
             var result = (Real: new float[first.Length], Imaginary: new float[first.Length]);
 

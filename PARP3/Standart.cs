@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace PARP4
+namespace PARP3
 {
-    internal class Standart
+    internal static class Standart
     {
         public static long Try<T>(Action<T[], T[]> action, T[] first, T[] second)
         {

@@ -1,11 +1,7 @@
-﻿namespace PARP4
+﻿namespace PARP3
 {
-    internal class FloatComplex
+    internal struct FloatComplex
     {
-        public FloatComplex()
-        {
-        }
-
         public FloatComplex(float real, float imaginary)
         {
             Real = real;
